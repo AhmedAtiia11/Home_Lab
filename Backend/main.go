@@ -17,5 +17,5 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/health", createUser)
-	http.ListenAndServe("0.0.0.0:8080", nil)
+	http.ListenAndServe("0.0.0.0:5000", nil)
 }
