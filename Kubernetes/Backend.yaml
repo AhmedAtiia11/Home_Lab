@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-app
+spec:
+  selector:
+    matchLabels:
+      app: Golang-app
+  template:
+    metadata:
+      labels:
+        app: Golang-app
+    spec:
+      containers:
+      - name: golang-app
+        image: ahmedatiia11/backend-go:V1.0.0
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: golang-svc
+spec:
+  selector:
+    app: Golang-app
+  ports:
+  - port: 5000
+    targetPort: 5000
+---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: backend-ingress
+#   annotations:
+#     traefik.ingress.kubernetes.io/router.entrypoints: web
+# spec:
+#   rules:
+#   - host: backend.localhost
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: golang-svc
+#             port:
+#               number: 5000    
+
