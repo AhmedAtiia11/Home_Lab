@@ -16,13 +16,6 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
-	// c := cors.New(cors.Options{
-	//     AllowedOrigins:   []string{"https://example.com"},
-	//     AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
-	//     AllowedHeaders:   []string{"Content-Type", "Authorization"},
-	//     AllowCredentials: true,
-	// })
 	http.HandleFunc("/health", createUser)
 	http.ListenAndServe("0.0.0.0:8080", nil)
 }
