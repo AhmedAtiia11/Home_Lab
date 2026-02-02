@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
+import { environment } from './environments/environment.ts';
 
 const ServerStatus = Object.freeze({
   OFFLINE: Symbol("offline"),
@@ -10,7 +11,8 @@ function App() {
   const [serverStatus, setServerStatus] = useState(ServerStatus.OFFLINE);
   setInterval(async () => {
     try {
-      const res = await fetch(process.env.REACT_APP_BACKEND_URL);
+      // const res = await fetch(process.env.REACT_APP_BACKEND_URL);
+      const res = await fetch(environment.backendUrl);
       const resData = await res.json();
       if (resData.msg === "healthy") setServerStatus(ServerStatus.ONLINE);
       else setServerStatus(ServerStatus.OFFLINE);
