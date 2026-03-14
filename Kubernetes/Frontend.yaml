@@ -53,12 +53,6 @@ spec:
             name: react-svc
             port:
               number: 3000
-      # - path: /
-      #   pathType: Prefix
-      #   backend:
-      #     service:
-      #       name: react-svc
-      #       port:
-      #         number: 3000
+
 
 
