@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: golang-app
-        image: ahmedatiia11/backend-go:V1.0.0
+        image: ahmedatiia11/backend-go:V1.0.2
         resources:
           requests:
             memory: "64Mi"
@@ -35,22 +35,22 @@ spec:
   - port: 5000
     targetPort: 5000
 ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: backend-ingress
-#   annotations:
-#     traefik.ingress.kubernetes.io/router.entrypoints: web
-# spec:
-#   rules:
-#   - host: backend.localhost
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: golang-svc
-#             port:
-#               number: 5000    
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+  - host: backend.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: golang-svc
+            port:
+              number: 5000    
 

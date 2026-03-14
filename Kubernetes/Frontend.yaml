@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: react-cont
-        image: ahmedatiia11/frontend-react:V1.0.4
+        image: ahmedatiia11/frontend-react:V1.0.6
         resources:
           requests:
             memory: "64Mi"
@@ -43,16 +43,9 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: frontend.localhost
+  - host: frontend.local
     http:
       paths:
-      - path: /health
-        pathType: Prefix
-        backend:
-          service:
-            name: golang-svc
-            port:
-              number: 5000
       - path: /
         pathType: Prefix
         backend:
@@ -60,5 +53,12 @@ spec:
             name: react-svc
             port:
               number: 3000
+      # - path: /
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: react-svc
+      #       port:
+      #         number: 3000
 
 
