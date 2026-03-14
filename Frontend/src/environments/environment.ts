@@ -1,3 +1,3 @@
 export const environment = {
-  backendUrl: '/health'
+  backendUrl: 'http://backend.local/health'
 };
