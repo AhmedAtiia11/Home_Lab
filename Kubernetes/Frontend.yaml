@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: react-cont
-        image: ahmedatiia11/frontend-react:V1.0.6
+        image: ahmedatiia11/frontend-react:V1.0.7
         resources:
           requests:
             memory: "64Mi"
@@ -32,27 +32,28 @@ spec:
   selector:
     app: React
   ports:
-  - port: 3000
+  - name: http
+    port: 3000
     targetPort: 3000
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: frontend-ingress
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
-spec:
-  rules:
-  - host: frontend.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: react-svc
-            port:
-              number: 3000
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: frontend-ingress
+#   annotations:
+#     traefik.ingress.kubernetes.io/router.entrypoints: web
+# spec:
+#   rules:
+#   - host: frontend.local
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: react-svc
+#             port:
+#               number: 3000
 
 
 
