@@ -33,7 +33,10 @@ The following technologies are currently used in this project:
 - Istio
 
 ## 🔐 Istio
-![Alt text](docs/images/Istio.png)
+<div align="center">
+  <img src="docs/images/Istio.png" alt="RTA Project" width="500"/>
+</div>
+
 
 All service-to-service communication inside the cluster is secured using Istio STRICT mTLS:
 
