@@ -1,15 +1,3 @@
-A Kubernetes-based homelab where i practice tools and deep dive in each to deepen my understanding for them 
-base application : is a simple connection test application that shows online when back can connect susseccfully to the front 
-back is a golang appication and front is a react app
-
-
-
-Tools used
-Go-lang
-Docker
-Kubernetes
-Istio
-
 # Project Overview
 
 This project is a Kubernetes-based homelab environment designed for hands-on practice and in-depth exploration of cloud-native and DevOps tools. The goal is to build a solid understanding of how modern infrastructure components integrate within a real-world microservices architecture.
