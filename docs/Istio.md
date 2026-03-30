@@ -133,7 +133,7 @@ istioctl proxy-config routes \
 # Should show http.8080 for backend.local and frontend.local
 
 # 10. Test it works
-curl -H "Host: backend.local" http://192.168.1.15:8080/health
+curl -H "Host: backend.local" Server-IP:8080/health
 # Expected: {"msg":"healthy"}
 
 # 11. Install observability addons (Grafana, Kiali, Prometheus, Jaeger)
