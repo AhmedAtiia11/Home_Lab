@@ -141,4 +141,7 @@ kubectl apply -f samples/addons/
 
 # 12. Verify addons are running
 kubectl get pods -n istio-system
+
+# 13. check Frontend
+http://frontend.local:8080/
 ```
