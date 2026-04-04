@@ -1,0 +1,38 @@
+# keda-scaledobject.yaml
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: golang-app-scaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: golang-app  # your deployment name             
+  minReplicaCount: 1         
+  maxReplicaCount: 5              
+  # cooldownPeriod: 30 #seconds to wait before scaling FROM zero → 1 only work if minReplicaCount is set to 0
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 30 # after metric drops below threshold, wait 30s before starting to scale down ,prevents flapping from brief traffic drops
+          policies:
+          - type: Pods
+            value: 1  # remove max 1 pod at a time
+            periodSeconds: 3 # wait 3 seconds before removing another pod
+        scaleUp:
+          stabilizationWindowSeconds: 0
+          policies:
+          - type: Pods
+            value: 1 # add max 1 pod at a time
+            periodSeconds: 3   # wait 3 seconds before adding another pod
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus.istio-system.svc.cluster.local:9090 
+        metricName: istio_requests_total
+        query: |
+          sum(rate(istio_requests_total{
+            destination_service_name="golang-svc",
+            response_code!~"5.*"
+          }[2m]))
+        threshold: "1"           # scale up when requests/sec exceeds 10 -- make 1 for testing purposes
