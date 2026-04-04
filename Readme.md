@@ -1,3 +1,8 @@
+<div align="center">
+  <img src="docs/images/keda.png" alt="RTA Project" width="500"/>
+</div>
+
+
 # Project Overview
 
 This project is a Kubernetes-based homelab environment designed for hands-on practice and in-depth exploration of cloud-native and DevOps tools. The goal is to build a solid understanding of how modern infrastructure components integrate within a real-world microservices architecture.
@@ -19,12 +24,9 @@ The following technologies are currently used in this project:
 - Docker
 - Kubernetes
 - Istio
+- Keda
 
 ## 🔐 Istio
-<div align="center">
-  <img src="docs/images/Istio.png" alt="RTA Project" width="500"/>
-</div>
-
 
 All service-to-service communication inside the cluster is secured using Istio STRICT mTLS:
 
@@ -33,3 +35,15 @@ All service-to-service communication inside the cluster is secured using Istio S
 - Plain-text or unauthorized traffic is rejected  
 
 This ensures a Zero Trust networking model inside Kubernetes.
+
+## 🚀 KEDA
+
+KEDA (Kubernetes Event-Driven Autoscaling) is an open-source component that enables automatic scaling of applications based on external events, rather than just CPU or memory usage.
+
+### Why KEDA?
+
+- **Event-Driven Scaling**: Scale based on real triggers like HTTP traffic, queue length, or custom metrics
+- **Faster Response**: React to demand changes more quickly than traditional autoscaling
+- **Resource Efficiency**: Better utilization by scaling based on business events
+
+KEDA automatically scales the backend service during load testing, demonstrating production-ready autoscaling behavior.
